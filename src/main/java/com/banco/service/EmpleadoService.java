@@ -1,17 +1,16 @@
 package com.banco.service;
 
 import com.banco.model.Empleado;
-import com.banco.repository.EmpleadoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class EmpleadoService {
+public interface EmpleadoService {
 
-    @Autowired
-    private EmpleadoRepository empleadoRepository;
+    Empleado registrarEmpleado(Empleado empleado);
 
-    public Empleado registrarEmpleado(Empleado empleado){
-        return empleadoRepository.guardarEmpleado(empleado);
-    }
+    List<Empleado> listarEmpleados();
+
+    Empleado buscarEmpleado(String dni);
+
+    void eliminarEmpleado(String dni);
+
 }

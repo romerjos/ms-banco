@@ -32,32 +32,61 @@ paths:
             schema:
               $ref: '#/components/schemas/Empleado'
       responses:
-        '200':
+        "200":
           description: Empleado registrado correctamente
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Empleado'
+
+  /api/banco/empleados:
+    get:
+      summary: Listar empleados
+      operationId: listarEmpleados
+      responses:
+        "200":
+          description: Lista de empleados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Empleado'
+
+  /api/banco/empleado/{dni}:
+    get:
+      summary: Buscar empleado por DNI
+      operationId: buscarEmpleadoPorDni
+      parameters:
+        - name: dni
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Empleado encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empleado'
+
+    delete:
+      summary: Eliminar empleado
+      operationId: eliminarEmpleado
+      parameters:
+        - name: dni
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Empleado eliminado correctamente
+
 components:
   schemas:
-    ClienteCuenta:
-      type: object
-      properties:
-        dni:
-          type: string
-        nombres:
-          type: string
-        apellidos:
-          type: string
-        edad:
-          type: integer
-        nroCuenta:
-          type: string
-        saldo:
-          type: number
-        tipoCuenta:
-          type: string
-          components:
+
     Empleado:
       type: object
       properties:
@@ -76,3 +105,16 @@ components:
         edad:
           type: integer
           example: 28
+
+    ClienteCuenta:
+      type: object
+      properties:
+        codCliente:
+          type: string
+          example: "C001"
+        nombre:
+          type: string
+          example: "Juan Perez"
+        saldo:
+          type: number
+          example: 1500.50
