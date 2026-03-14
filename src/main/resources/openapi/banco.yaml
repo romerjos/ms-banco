@@ -1,0 +1,78 @@
+openapi: 3.0.1
+info:
+  title: API Banco
+  version: 1.0.0
+
+paths:
+  /api/banco/cliente/{codCliente}:
+    get:
+      summary: Obtener información de cliente
+      parameters:
+        - name: codCliente
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Información del cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClienteCuenta'
+
+  /api/banco/empleado:
+    post:
+      summary: Registrar un empleado
+      operationId: registrarEmpleado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Empleado'
+      responses:
+        '200':
+          description: Empleado registrado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empleado'
+components:
+  schemas:
+    ClienteCuenta:
+      type: object
+      properties:
+        dni:
+          type: string
+        nombres:
+          type: string
+        apellidos:
+          type: string
+        edad:
+          type: integer
+        nroCuenta:
+          type: string
+        saldo:
+          type: number
+        tipoCuenta:
+          type: string
+          components:
+    Empleado:
+      type: object
+      properties:
+        dni:
+          type: string
+          example: "87654321"
+        nombre:
+          type: string
+          example: "Carlos"
+        apellidos:
+          type: string
+          example: "Ramirez"
+        puesto:
+          type: string
+          example: "Cajero"
+        edad:
+          type: integer
+          example: 28
