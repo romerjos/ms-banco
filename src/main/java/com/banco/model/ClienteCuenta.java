@@ -1,5 +1,12 @@
 package com.banco.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ClienteCuenta {
 
     private String dni;
@@ -10,18 +17,4 @@ public class ClienteCuenta {
     private double saldo;
     private String tipoCuenta;
 
-    public ClienteCuenta(){}
-
-    public ClienteCuenta(String dni, String nombres, String apellidos,
-                         int edad, String nroCuenta, double saldo, String tipoCuenta) {
-        this.dni = dni;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.nroCuenta = nroCuenta;
-        this.saldo = saldo;
-        this.tipoCuenta = tipoCuenta;
-    }
-
-    // getters y setters
 }
