@@ -12,9 +12,10 @@ public class EmpleadoController {
     @Autowired
     private EmpleadoService empleadoService;
 
-    @PostMapping("/registrar")
+    @PostMapping("/empleado")
     public Empleado registrarEmpleado(@RequestBody Empleado empleado){
         return empleadoService.registrarEmpleado(empleado);
     }
+
 
 }
